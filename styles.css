@@ -1,0 +1,32 @@
+/* Custom styles for quartify presentation */
+
+.reveal h1, .reveal h2, .reveal h3 {
+  text-transform: none;
+}
+
+.reveal .slide-logo {
+  height: 80px !important;
+  max-width: none !important;
+  max-height: none !important;
+}
+
+/* Better spacing for lists */
+.reveal ul, .reveal ol {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.reveal li {
+  margin-bottom: 0.5em;
+}
+
+/* Code block styling */
+.reveal pre code {
+  max-height: 500px;
+  font-size: 0.8em;
+}
+
+/* Callout boxes */
+.callout {
+  margin: 1em 0;
+}

@@ -1,0 +1,10 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "quartify - Présentation"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Présentation
