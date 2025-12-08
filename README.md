@@ -10,7 +10,8 @@ Cette présentation détaille le fonctionnement et l'utilisation du package R [q
 
 La présentation est automatiquement déployée sur GitHub Pages via GitHub Actions :
 
-👉 **[Voir la présentation](https://ddotta.github.io/quartify_presentation/)**
+👉 **[Version française](https://ddotta.github.io/quartify_presentation/)**  
+👉 **[English version](https://ddotta.github.io/quartify_presentation/index_en.html)**
 
 ## 🛠️ Développement local
 

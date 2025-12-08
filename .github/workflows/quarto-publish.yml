@@ -34,9 +34,9 @@ jobs:
         with:
           version: 'release'
 
-      - name: Render Quarto presentation
+      - name: Render Quarto presentations
         run: |
-          quarto render index.qmd
+          quarto render
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

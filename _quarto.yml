@@ -3,8 +3,10 @@ project:
   output-dir: _site
 
 website:
-  title: "quartify - Présentation"
+  title: "quartify - Presentation"
   navbar:
     left:
       - href: index.qmd
-        text: Présentation
+        text: Français
+      - href: index_en.qmd
+        text: English

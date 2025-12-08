@@ -33,28 +33,6 @@ Un package R qui **convertit automatiquement** vos scripts R en documents Quarto
 
 ---
 
-## 🤔 Pourquoi quartify ?
-
-::: {.columns}
-::: {.column width="50%"}
-### knitr::spin()
-- Convertit vers R Markdown (.Rmd)
-- Syntaxe spéciale (`#'`, `#+`)
-- Nécessite une étape supplémentaire pour le HTML
-- Fonctionnalités limitées
-:::
-
-::: {.column width="50%"}
-### quartify
-- Convertit vers Quarto (.qmd) ✨
-- Syntaxe naturelle R (`#`)
-- HTML généré directement
-- Accès à toutes les fonctionnalités modernes
-:::
-:::
-
----
-
 ## ✨ Avantages de Quarto
 
 ::: {.incremental}
@@ -88,11 +66,12 @@ Un package R qui **convertit automatiquement** vos scripts R en documents Quarto
 
 ::: {.incremental}
 - 📝 **Conversion automatique** : .R → .qmd
+- 📚 **Quarto Books** : Génération automatique de livres navigables
 - 🗂️ **Sections RStudio** : `####`, `====`, `----`
 - 💬 **Préservation des commentaires**
 - 📊 **Organisation du code** en blocs
 - 🎨 **YAML personnalisable** : titre, auteur, thème
-- 📑 **Table des matières** automatique
+- 📑 **Table des matières** automatique (Sommaire en français)
 - 🌐 **Rendu HTML** optionnel
 - 🎭 **25+ thèmes Quarto**
 :::
@@ -118,9 +97,11 @@ library(quartify)
 ## Essayez sans installation !
 **[https://quartify.lab.sspcloud.fr/](https://quartify.lab.sspcloud.fr/)**
 
-- ✅ Téléversez votre script R
-- ✅ Configurez les options
-- ✅ Téléchargez .qmd et .html
+- ✅ Téléversez un ou plusieurs scripts R
+- ✅ Sélectionnez un répertoire pour conversion par lots
+- ✅ Créez des Quarto Books automatiquement
+- ✅ Configurez les options (titre, auteur, thème)
+- ✅ Téléchargez .qmd, .html ou archive .zip
 - ✅ Aucune installation nécessaire !
 :::
 
@@ -134,6 +115,15 @@ library(quartify)
 library(quartify)
 quartify_app()  # Ouvre dans le navigateur
 ```
+
+::: {.fragment}
+**Nouvelles possibilités :**
+
+- Convertir un ou plusieurs fichiers
+- Convertir un répertoire entier
+- Créer des Quarto Books avec navigation
+- Personnaliser le répertoire de sortie
+:::
 
 ::: {.fragment}
 ### Option 2 : Add-in RStudio
@@ -182,6 +172,11 @@ rtoqmd("mon_script.R",
 ```r
 # Convertir tous les scripts d'un répertoire
 rtoqmd_dir("chemin/vers/scripts")
+
+# Créer un Quarto Book (activé par défaut)
+rtoqmd_dir("chemin/vers/scripts",
+           create_book = TRUE,
+           output_dir = "_book")
 
 # Avec options personnalisées
 rtoqmd_dir("chemin/vers/scripts", 
@@ -320,6 +315,50 @@ Organise le contenu en onglets interactifs
 
 ---
 
+## ✨ Nouveauté : Quarto Books
+
+::: {.incremental}
+- 📚 **Conversion de répertoires** → Livres Quarto navigables
+- 🗂️ **Structure automatique** : Un chapitre par script
+- 📑 **Navigation intégrée** : Sidebar avec tous les chapitres
+- 🎯 **Activé par défaut** avec `rtoqmd_dir()`
+- 🔧 **Personnalisable** : Répertoire de sortie configurable
+:::
+
+---
+
+## 🔍 Qualité du code
+
+### Intégration avec styler et lintr
+
+::: {.incremental}
+- ✅ **use_styler** : Affiche le code formaté (tidyverse style)
+- ✅ **use_lintr** : Identifie les problèmes de qualité
+- ✅ **apply_styler** : Applique le formatage directement (⚠️ modifie le fichier)
+- 📑 **Tabsets interactifs** : Code original / Formaté / Issues
+:::
+
+---
+
+## 🔍 Exemple qualité du code
+
+```r
+# Suggestions de style dans des onglets
+rtoqmd("mon_script.R", "output.qmd", 
+       use_styler = TRUE)
+
+# Style + lint
+rtoqmd("mon_script.R", "output.qmd",
+       use_styler = TRUE,
+       use_lintr = TRUE)
+
+# Appliquer directement (⚠️ modifie l'original)
+rtoqmd("mon_script.R", "output.qmd",
+       apply_styler = TRUE)
+```
+
+---
+
 ## 🎨 Thèmes Quarto
 
 ### Thèmes clairs
@@ -440,7 +479,9 @@ iris |>
 4. **Exploitez** les callouts pour les points importants
 5. **Ajoutez** des diagrammes Mermaid pour la visualisation
 6. **Organisez** le contenu complexe avec des tabsets
-7. **Testez** différents thèmes pour trouver le meilleur
+7. **Créez des Books** pour projets multi-fichiers
+8. **Vérifiez la qualité** avec styler/lintr
+9. **Testez** différents thèmes pour trouver le meilleur
 :::
 
 ---
@@ -463,8 +504,10 @@ iris |>
 1. **Simplicité** : Commentaires naturels → Documentation HTML
 2. **Puissance** : Toutes les fonctionnalités modernes de Quarto
 3. **Flexibilité** : Interface Shiny, ligne de commande, ou web
-4. **Automatisation** : Intégration CI/CD facile
-5. **Future-proof** : Basé sur Quarto, l'avenir de R Markdown
+4. **Évolutivité** : Quarto Books pour projets complexes
+5. **Qualité** : Intégration styler/lintr pour code propre
+6. **Automatisation** : Intégration CI/CD facile
+7. **Future-proof** : Basé sur Quarto, l'avenir de R Markdown
 :::
 
 ---
