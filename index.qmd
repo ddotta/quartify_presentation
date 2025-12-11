@@ -1157,8 +1157,19 @@ Parfait pour la revue de code !
 
 ---
 
-## Rendu de styler et lintr
+## ✏️ Utiliser apply_styler
 
+::: {.incremental}
+- ⚠️ Le paramètre `apply_styler` permet de formater **définitivement** vos fichiers de scripts R selon le guide de style tidyverse.
+- Le paramètre `apply_styler` ne fonctionne que si `use_styler = TRUE`. 
+- Si vous définissez `apply_styler = TRUE` mais `use_styler = FALSE`, vous recevrez un avertissement et le fichier source ne sera pas modifié.
+- Le fichier source est modifié AVANT la conversion
+- Le fichier formaté est ensuite utilisé pour la conversion en .qmd
+:::
+
+---
+
+## Rendu de styler et lintr
 
 
 ![](images/record_quartify.mp4)
@@ -1298,27 +1309,6 @@ generate-docs:
     paths:
       - scripts/**/*.qmd
       - scripts/**/*.html
-```
-
----
-
-## 🔄 Azure Pipelines - Configuration
-
-```yaml
-- task: UseRVersion@1
-  inputs:
-    versionSpec: '4.5.x'
-
-- script: |
-    R -e "install.packages('devtools')"
-    R -e "devtools::install_github('ddotta/quartify')"
-    R -e "quartify::rtoqmd_dir('scripts/', render = TRUE)"
-  displayName: 'Generate documentation'
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathToPublish: 'scripts'
-    artifactName: 'documentation'
 ```
 
 ---
