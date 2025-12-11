@@ -15,6 +15,9 @@ format:
     transition: slide
     background-transition: fade
     highlight-style: github
+
+execute:
+  eval: false
 ---
 
 ## 📦 Qu'est-ce que quartify ?
@@ -28,36 +31,67 @@ Un package R qui **convertit automatiquement** vos scripts R en documents Quarto
 :::
 
 ::: {.fragment}
-🎯 **L'objectif** : Rendre votre code plus lisible et partageable
+🎯 **L'objectif** : Garder les scripts les plus propres et familiers tout en les rendant compatibles avec l'éco-système Quarto.
 :::
 
 ---
 
-## ✨ Avantages de Quarto
+## 🤔 Le problème
 
 ::: {.incremental}
-- ✅ **Système moderne** : Successeur de R Markdown
-- ✅ **25+ thèmes** : Personnalisation avancée
-- ✅ **Interactivité** : Observable JS, Shiny, widgets
-- ✅ **Publications scientifiques** : Citations, bibliographies
-- ✅ **Diagrammes Mermaid** : Flowcharts intégrés
-- ✅ **Future-proof** : Développement actif par Posit
+- 📝 Scripts R avec commentaires utiles mais **peu lisibles**
+- 👥 Difficile à **partager** avec des non-développeurs
+- 📊 Analyses complexes **mal documentées**
+- 🔄 **Duplication** entre code et documentation
+- ⏰ Temps perdu à créer manuellement de la documentation
+:::
+
+---
+
+## ✨ La solution quartify
+
+::: {.incremental}
+- **Automatisation** : Conversion R → Quarto en un clic
+- **Préservation** : Structure et commentaires conservés
+- **Enrichissement** : Rendu HTML
+- **Flexibilité** : des fonctions R, des addins RStudio sous forme de Shiny, une version web (sans installation requise)
+- **Évolutivité** : Du script simple au Quarto Book
+:::
+
+---
+
+## 🎯 Pourquoi Quarto ?
+
+::: {.incremental}
+- 🚀 **Successeur officiel** de R Markdown (nouvelle syntaxe et fonctionnalités)
+- 🎨 **25 thèmes** prêts à l'emploi
+- 📐 **Diagrammes** : Mermaid intégré (flowcharts, séquences...)
+- 📱 **Responsive** : S'adapte à tous les écrans
+- 🔮 **Future-proof** : Développement actif et communauté croissante
 :::
 
 ---
 
 ## 🎯 Cas d'usage
 
+### 1. Documentation technique
+
 ::: {.incremental}
-1. **Documentation automatique**
-   - Scripts commentés → Documentation HTML
+- 📝 Transformer scripts R → Documentation HTML navigable
+- 🔍 Revues de code facilitées pour les équipes
+- 👥 Partager analyses entre pairs
+:::
 
-2. **Revue de code**
-   - Présentation formatée pour non-développeurs
+---
 
-3. **Analyses reproductibles**
-   - Structure logique préservée
-   - Navigation par sections
+## 🎯 Cas d'usage
+
+### 2. Gestion de projet
+
+::: {.incremental}
+- 📚 Créer des Quarto Books pour projets complexes
+- 🗂️ Documentation centralisée et navigable
+- 🔄 Intégration CI/CD pour docs à jour
 :::
 
 ---
@@ -65,24 +99,52 @@ Un package R qui **convertit automatiquement** vos scripts R en documents Quarto
 ## 🚀 Fonctionnalités principales
 
 ::: {.incremental}
-- 📝 **Conversion automatique** : .R → .qmd
-- 📚 **Quarto Books** : Génération automatique de livres navigables
-- 🗂️ **Sections RStudio** : `####`, `====`, `----`
-- 💬 **Préservation des commentaires**
-- 📊 **Organisation du code** en blocs
-- 🎨 **YAML personnalisable** : titre, auteur, thème
-- 📑 **Table des matières** automatique (Sommaire en français)
-- 🌐 **Rendu HTML** optionnel
-- 🎭 **25+ thèmes Quarto**
+- 📝 **Conversion R → Quarto** : Scripts vers .qmd
+- 🗂️ **[Sections RStudio](https://docs.posit.co/ide/user/ide/guide/code/code-sections.html#code-sections)** : Reconnaissance automatique
+- 💬 **Commentaires préservés** : Texte dans le document final
+- 🔢 **Numéros de lignes** : Accès aux numéros de lignes dans le script R de départ
+- 📊 **Blocs de code statiques**
+- 📑 **Table des matières** : Automatique
+- 🎨 **YAML personnalisable** : Titre, auteur, thème, options
+:::
+
+---
+
+## 🚀 Fonctionnalités principales (suite)
+
+::: {.incremental}
+- 🌐 **Rendu HTML** : Optionnel avec ouverture automatique
+- 🎭 **25 thèmes Quarto** : Personnalisation visuelle
+- 🎨 **[Callouts](https://quarto.org/docs/authoring/callouts.html)** : Notes, tips, warnings...
+- 📑 **[Tabsets](https://quarto.org/docs/authoring/callouts.html)** : Organisation en onglets
+- 📊 **[Diagrammes Mermaid](https://quarto.org/docs/authoring/diagrams.html)** : Flowcharts, séquences...
+- 🔍 **Qualité du code** : Intégration styler/lintr
+:::
+
+---
+
+## 🚀 Fonctionnalités principales (suite)
+
+::: {.incremental}
+- 📂 **Conversion par lots** : Répertoires entiers
+- 🔧 **Add-in RStudio** : Intégration IDE
+- 🖥️ **Interface Shiny** : utilisation par tous les IDE
+- 🌐 **Version web** : Pas d'installation nécessaire
+- 📚 **[Quarto Books](https://quarto.org/docs/books/)** : Répertoires vers livres navigables
+- 🤖 **Automatisation** : Compatible CI/CD
 :::
 
 ---
 
 ## 🛠️ Installation
 
+### Depuis GitHub (version développement)
+
 ```r
-# Installation depuis GitHub
+# Installation de devtools si nécessaire
 install.packages("devtools")
+
+# Installation de quartify
 devtools::install_github("ddotta/quartify")
 
 # Chargement du package
@@ -91,106 +153,471 @@ library(quartify)
 
 ---
 
-## 🌐 Version Web
+## 🛠️ Installation (suite)
 
-::: {.callout-tip}
-## Essayez sans installation !
-**[https://quartify.lab.sspcloud.fr/](https://quartify.lab.sspcloud.fr/)**
+### Depuis CRAN (quand disponible)
 
-- ✅ Téléversez un ou plusieurs scripts R
-- ✅ Sélectionnez un répertoire pour conversion par lots
-- ✅ Créez des Quarto Books automatiquement
-- ✅ Configurez les options (titre, auteur, thème)
-- ✅ Téléchargez .qmd, .html ou archive .zip
-- ✅ Aucune installation nécessaire !
+```r
+install.packages("quartify")
+library(quartify)
+```
+
+::: {.callout-note}
+Actuellement en développement - utilisez GitHub
 :::
 
 ---
 
-## 💻 Utilisation - Interface Shiny
+## 🌐 Version Web - Sans installation !
 
-### Option 1 : Application standalone
+::: {.callout-tip icon=false}
+## 🚀 Essayez immédiatement !
+
+**[https://quartify.lab.sspcloud.fr/](https://quartify.lab.sspcloud.fr/)**
+
+✅ Aucune installation R requise  
+✅ Interface web complète  
+✅ Toutes les fonctionnalités disponibles
+:::
+
+---
+
+## 🌐 Fonctionnalités de la version web
+
+::: {.incremental}
+1. **Upload de fichiers** : Un ou plusieurs scripts R
+2. **Conversion de répertoire** : Sélection d'un dossier entier
+3. **Création de Books** : Génération automatique de livres Quarto
+4. **Configuration** : Titre, auteur, thème, options de rendu
+5. **Téléchargement** : .qmd, .html, ou archive .zip complète
+:::
+
+---
+
+## 🌐 Avantages de la version web
+
+::: {.incremental}
+- **Accessible** : Depuis n'importe quel navigateur
+- **Rapide** : Pas de setup local nécessaire
+- **Partageable** : Envoyez le lien à vos collègues
+- **Mise à jour** : Toujours la dernière version
+- **Sans risque** : Pas d'installation sur votre machine
+- **Démonstration** : Parfait pour tester avant installation
+:::
+
+---
+
+## 💻 Trois façons d'utiliser quartify
+
+### 1️⃣ Interface Shiny
 
 ```r
 library(quartify)
-quartify_app()  # Ouvre dans le navigateur
+quartify_app()  # Lance l'application dans le navigateur
 ```
 
 ::: {.fragment}
-**Nouvelles possibilités :**
-
-- Convertir un ou plusieurs fichiers
-- Convertir un répertoire entier
-- Créer des Quarto Books avec navigation
-- Personnaliser le répertoire de sortie
+**Public cible** : Utilisateurs préférant une interface graphique et qui utilisent un IDE différent de RStudio
 :::
 
-::: {.fragment}
-### Option 2 : Add-in RStudio
+---
+
+## 💻 Trois façons d'utiliser quartify
+
+### 2️⃣ Add-in RStudio
 
 1. Ouvrir un script R dans RStudio
 2. Menu **Addins** → **Convert R Script to Quarto**
-3. Configurer et cliquer sur **GENERATE**
+
+::: {.fragment}
+**Public cible** : Utilisateurs préférant une interface graphique et workflow intégré dans RStudio
 :::
 
 ---
 
-## 💻 Utilisation - Ligne de commande
+## 💻 Trois façons d'utiliser quartify
 
-### Exemple basique
+### 3️⃣ Ligne de commande (CLI)
 
 ```r
-# Conversion simple
-rtoqmd("mon_script.R", "mon_document.qmd")
+library(quartify)
+rtoqmd("mon_script.R", "output.qmd")
+```
 
-# Conversion sans rendu HTML
-rtoqmd("mon_script.R", "mon_document.qmd", 
+::: {.fragment}
+**Idéal pour** : Scripts, automatisation CI/CD...
+:::
+
+---
+
+## 💻 Interface Shiny - Détails
+
+### Onglet "Convertir un fichier"
+
+::: {.incremental}
+- 📁 Sélection du fichier R source
+- 📝 Configuration du nom de sortie
+- ⚙️ Options : titre, auteur, format, thème
+- 🎨 Choix du thème parmi 25+ disponibles
+- 🔧 Options avancées : numérotation, table des matières
+- 📊 Options de rendu : HTML, ouverture auto
+:::
+
+---
+
+## 💻 Interface Shiny - Détails (suite)
+
+### Onglet "Convertir un répertoire"
+
+::: {.incremental}
+- 📂 Sélection d'un répertoire de scripts
+- 📚 Option "Créer un Quarto Book" (par défaut)
+- 🗂️ Configuration du répertoire de sortie
+- ⚙️ Options communes : auteur, thème, rendu
+- 🌐 Génération optionnelle de HTML pour tous les fichiers
+:::
+
+---
+
+## 💻 Interface Shiny - Détails (suite)
+
+### Onglet "Convertir plusieurs fichiers"
+
+::: {.incremental}
+- 📁 Upload de plusieurs fichiers R en une fois
+- 📦 Traitement par lots
+- 📚 Option "Créer un Quarto Book"
+- 💾 Téléchargement d'une archive ZIP complète
+- ⚙️ Configuration unifiée pour tous les fichiers
+:::
+
+---
+
+## 🔧 Fonction principale : rtoqmd()
+
+### Syntaxe de base
+
+```r
+rtoqmd(
+  input_file,           # Fichier R source
+  output_file = NULL,   # Fichier .qmd de sortie (auto si NULL)
+  title = NULL,         # Titre du document
+  author = NULL,        # Auteur
+  format = "html",      # Format de sortie
+  theme = "cosmo",      # Thème Quarto
+  render = TRUE,        # Générer HTML ?
+  open_html = TRUE      # Ouvrir HTML automatiquement ?
+)
+```
+
+---
+
+## 🔧 Paramètres de rtoqmd()
+
+### Paramètres de base
+
+::: {.incremental}
+- **input_file** : Chemin du script R source
+- **output_file** : Nom du fichier .qmd (par défaut : même nom)
+- **title** : Titre dans l'en-tête YAML (sinon depuis métadonnées ou nom fichier)
+- **author** : Auteur (sinon depuis métadonnées)
+- **format** : pour l'instant que "html"
+:::
+
+---
+
+## 🔧 Paramètres de rtoqmd() (suite)
+
+### Paramètres de personnalisation
+
+::: {.incremental}
+- **theme** : Parmi 25 thèmes Quarto (défaut: "cosmo")
+- **number_sections** : Numéroter les sections ? (défaut: FALSE)
+- **show_source_line** : Afficher les numéros de ligne originaux dans les chunks de code (défaut : TRUE)
+- **toc** : Inclure table des matières ? (défaut: TRUE)
+- **toc_title** : Titre de la TOC (défaut: "Sommaire")
+- **toc_depth** : Profondeur de la TOC (défaut: 3)
+:::
+
+---
+
+## 🔧 Paramètres de rtoqmd() (suite)
+
+### Paramètres de sortie
+
+::: {.incremental}
+- **render** : Générer le HTML ? (défaut: TRUE)
+- **output_html_file** : Nom du fichier HTML de sortie
+- **open_html** : Ouvrir le HTML ? (défaut: TRUE)
+- **use_styler** : Afficher suggestions de formatage (défaut: FALSE)
+- **use_lintr** : Afficher problèmes de qualité (défaut: FALSE)
+- ⚠ **apply_styler** : Appliquer formatage (défaut: FALSE)
+:::
+
+---
+
+## 💻 Exemples d'utilisation
+
+### Exemple 1 : Conversion simple
+
+```r
+# Conversion basique avec rendu HTML
+rtoqmd("analyse.R")
+
+# Génère : analyse.qmd + analyse.html
+# Ouvre le HTML dans le navigateur
+```
+
+---
+
+## 💻 Exemples d'utilisation
+
+### Exemple 2 : Sans rendu HTML
+
+```r
+# Générer uniquement le .qmd
+rtoqmd("analyse.R", 
        render = FALSE)
+
+# Génère : analyse.qmd uniquement
 ```
 
 ---
 
-## 💻 Personnalisation
+## 💻 Exemples d'utilisation
+
+### Exemple 3 : Personnalisation complète
 
 ```r
-rtoqmd("mon_script.R", 
-       output_file = "mon_document.qmd",
-       title = "Mon analyse statistique",
-       author = "Votre nom",
-       format = "html",
-       theme = "cosmo",              # Thème Quarto
-       render = TRUE,                # Générer HTML
-       output_html_file = "docs/analyse.html",
-       open_html = TRUE,             # Ouvrir HTML
-       number_sections = TRUE)       # Numéroter sections
+rtoqmd(
+  input_file = "mon_script.R",
+  output_file = "rapport_detaille.qmd",
+  title = "Analyse statistique des ventes 2024",
+  author = "Équipe Data Science",
+  format = "html",
+  theme = "flatly",
+  number_sections = TRUE,
+  render = TRUE,
+  output_html_file = "docs/rapport_ventes_2024.html",
+  open_html = TRUE
+)
 ```
 
 ---
 
-## 📂 Conversion par lots
+## 💻 Exemples d'utilisation
+
+### Exemple 4 : Avec vérification qualité
 
 ```r
-# Convertir tous les scripts d'un répertoire
-rtoqmd_dir("chemin/vers/scripts")
+rtoqmd(
+  input_file = "analyse.R",
+  output_file = "analyse.qmd",
+  use_styler = TRUE,    # Afficher suggestions de style
+  use_lintr = TRUE,     # Afficher problèmes de qualité
+  render = TRUE
+)
 
-# Créer un Quarto Book (activé par défaut)
-rtoqmd_dir("chemin/vers/scripts",
-           create_book = TRUE,
-           output_dir = "_book")
-
-# Avec options personnalisées
-rtoqmd_dir("chemin/vers/scripts", 
-           author = "Équipe Data",
-           render = TRUE,
-           output_html_dir = "docs/html",
-           exclude_pattern = "test_.*\\.R$")
+# Génère des tabsets avec :
+# - Code original
+# - Code formaté (suggestion)
+# - Issues de qualité
 ```
 
 ---
 
-## 📝 Format du script R
+## 📂 Conversion par répertoire : rtoqmd_dir()
 
-### Métadonnées (optionnel)
+### Syntaxe
+
+```r
+rtoqmd_dir(
+  input_dir,              # Répertoire contenant les .R
+  output_dir = NULL,      # Répertoire de sortie (défaut: input_dir)
+  create_book = TRUE,     # Créer un Quarto Book ?
+  author = NULL,
+  render = TRUE,
+  output_html_dir = NULL,
+  exclude_pattern = NULL  # Pattern pour exclure fichiers
+)
+```
+
+---
+
+## 📂 Exemples de conversion par répertoire
+
+### Exemple 1 : Conversion simple d'un répertoire
+
+```r
+# Convertir tous les .R d'un répertoire
+rtoqmd_dir("scripts/analyses")
+
+# Génère :
+# - Un .qmd pour chaque .R
+# - Un Quarto Book avec navigation
+# - HTML pour chaque fichier
+```
+
+---
+
+## 📂 Exemples de conversion par répertoire
+
+### Exemple 2 : Sans créer de Book
+
+```r
+# Juste convertir les fichiers individuellement
+rtoqmd_dir("scripts/", 
+           create_book = FALSE)
+
+# Génère un .qmd et .html pour chaque .R
+# Pas de structure de livre
+```
+
+---
+
+## 📂 Exemples de conversion par répertoire
+
+### Exemple 3 : Avec exclusion de fichiers
+
+```r
+# Exclure les fichiers de test
+rtoqmd_dir(
+  input_dir = "scripts/",
+  exclude_pattern = "^test_.*\\.R$", 
+  author = "Équipe Data",
+  theme = "darkly"
+)
+
+# Tous les fichiers R dont le nom commence par test_ seront ignorés
+```
+
+---
+
+## 📂 Exemples de conversion par lots
+
+### Exemple 4 : Organisation personnalisée
+
+```r
+# Sortie dans un répertoire dédié
+rtoqmd_dir(
+  input_dir = "R/analyses/",
+  output_dir = "documentation/",
+  output_html_dir = "docs/html/",
+  create_book = TRUE,
+  author = "Mon équipe",
+  theme = "cosmo",
+  render = TRUE
+)
+```
+
+---
+
+## 📚 Quarto Books - Qu'est-ce que c'est ?
+
+::: {.incremental}
+- [Lien vers la documentation](https://quarto.org/docs/books/)
+- 📖 **Structure de livre** : Chapitres, parties, navigation
+- 🗂️ **Sidebar automatique** : Navigation entre tous les fichiers
+- 🔍 **Recherche intégrée** : Chercher dans tout le livre
+- 📱 **Design responsive** : Adapté mobile/tablette/desktop
+- 🎨 **Personnalisable** : Thèmes, logo, favicon
+- 🌐 **Publication facile** : Gitlab/GitHub Pages, Netlify, Quarto Pub...
+:::
+
+---
+
+## 📚 Structure d'un Quarto Book
+
+```
+_book/
+├── _quarto.yml          # Configuration du livre
+├── index.qmd            # Page d'accueil
+├── chapter1.qmd         # Chapitre 1
+├── chapter2.qmd         # Chapitre 2
+└── ...
+```
+
+::: {.fragment}
+**quartify génère automatiquement** cette structure à partir de vos scripts R !
+:::
+
+---
+
+## 📚 Création automatique de Books
+
+```r
+# Active par défaut avec rtoqmd_dir()
+rtoqmd_dir("scripts/")
+
+# Génère :
+# - _quarto.yml avec configuration
+# - index.qmd comme page d'accueil
+# - Un chapitre par script R
+# - Navigation dans la sidebar
+```
+
+---
+
+## 📚 Contenu du _quarto.yml généré
+
+```yaml
+project:
+  type: book
+  output-dir: _book
+
+book:
+  title: "Documentation"
+  author: "Votre nom"
+  chapters:
+    - index.qmd
+    - chapter1.qmd
+    - chapter2.qmd
+
+format:
+  html:
+    theme: cosmo
+```
+
+---
+
+## 📚 Avantages des Quarto Books
+
+::: {.incremental}
+- 🎯 **Organisation claire** : Structure projet complexe
+- 📖 **Navigation fluide** : Entre tous les chapitres
+- 🔍 **Recherche globale** : Dans tout le contenu
+- 📱 **Expérience optimale** : Lecture sur tous supports
+:::
+
+---
+
+## 📝 Format du script R source
+
+### Structure recommandée
+
+```r
+# Title : Titre de l'analyse
+#
+# Author : Votre nom
+#
+# Date : 2025-12-10
+#
+# Description : Description détaillée
+# de ce que fait ce script
+#
+
+## Section principale ####
+
+# Commentaire explicatif
+
+code_r <- "exemple"
+```
+
+---
+
+## 📝 Métadonnées (optionnel)
+
+### En début de script
 
 ```r
 # Title : Analyse des données Iris
@@ -199,83 +626,242 @@ rtoqmd_dir("chemin/vers/scripts",
 #
 # Date : 2025-12-05
 #
-# Description : Explorer les différences entre
-# les espèces d'iris
+# Description : Cette analyse explore les différences
+# entre les trois espèces d'iris en utilisant
+# des méthodes statistiques avancées.
 #
 ```
 
----
-
-## 📝 Règles de commentaires
-
-### 1. Sections de code (en-têtes)
-
-```r
-## Titre niveau 2 ####
-
-### Titre niveau 3 ====
-
-#### Titre niveau 4 ----
-```
-
 ::: {.callout-note}
-Au moins 4 symboles à la fin (`#`, `=` ou `-`)
+Si absent, quartify utilise le nom du fichier comme titre
 :::
 
 ---
 
-## 📝 Règles de commentaires (suite)
+## 📝 Sections et sous-sections
 
-### 2. Commentaires réguliers → Texte
+### Syntaxe RStudio
 
 ```r
-# Ceci est un commentaire autonome
-# Il devient du texte dans le document Quarto
+## Titre niveau 2 (Heading 2) ####
+
+### Titre niveau 3 (Heading 3) ====
+
+#### Titre niveau 4 (Heading 4) ----
 ```
 
-### 3. Lignes de code
+::: {.callout-important}
+Minimum **4 symboles** à la fin (`#`, `=` ou `-`)
+:::
+
+---
+
+## 📝 Hiérarchie des sections
 
 ```r
+# Titre niveau 1 (titre du document YAML)
+
+## Import des données ####
+
+### Lecture CSV ====
+
+#### Vérification qualité ----
+
+## Analyse exploratoire ####
+
+### Statistiques descriptives ====
+```
+
+---
+
+## 📝 Commentaires → Texte
+
+### Règle de base
+
+```r
+# Ce commentaire seul sur sa ligne
+# devient du texte dans le document Quarto
+
 iris |> filter(Species == "setosa")
 ```
 
+::: {.fragment}
+**Devient dans le .qmd :**
+````markdown
+Ce commentaire seul sur sa ligne
+devient du texte dans le document Quarto
+
+```{.r}
+Ligne 4
+iris |> filter(Species == "setosa")
+```
+````
+:::
+
 ---
 
-## 📝 Règles de commentaires (suite)
-
-### 4. Commentaires inline (dans le code)
+## 📝 Commentaires inline (dans le code)
 
 ```r
-iris %>% 
-  # Ce commentaire reste dans le bloc de code
-  select(Species)
+iris |> 
+  # Ce commentaire avec espace avant reste dans le code
+  filter(Species == "setosa") |>
+  select(Sepal.Length)  # Commentaire en fin de ligne reste aussi
 ```
 
 ::: {.callout-warning}
-Les commentaires avec espace avant `#` restent dans le code !
+Commentaires **précédés d'espace** ou **en fin de ligne** restent dans le bloc de code !
 :::
 
 ---
 
-## 🎨 Callouts
+## 📝 Exemples de conversion
+
+### Script R
 
 ```r
-# callout-note - Note importante
-# Ceci est le contenu du callout.
-# Il peut s'étendre sur plusieurs lignes.
+## Analyse descriptive ####
 
-x <- 1
+# Calculer les statistiques de base
+
+summary(iris)
+
+# La fonction summary() fournit :
+# - Minimum et maximum
+# - Quartiles
+# - Moyenne
+
+### Distribution des espèces ====
+
+table(iris$Species)
 ```
 
-::: {.fragment}
-5 types disponibles :
+---
 
-- `note`, `tip`, `warning`, `caution`, `important`
+## 📝 Document Quarto généré
+
+````markdown
+## Analyse descriptive
+
+Calculer les statistiques de base
+
+```{.r}
+Ligne 5
+summary(iris)
+```
+
+La fonction summary() fournit :
+- Minimum et maximum
+- Quartiles
+- Moyenne
+
+### Distribution des espèces
+
+```{.r}
+Ligne 14
+table(iris$Species)
+```
+````
+
+---
+
+## 🎨 Callouts - Qu'est-ce que c'est ?
+
+::: {.callout-note}
+## Note
+Blocs de texte **mis en évidence** pour attirer l'attention
 :::
+
+::: {.callout-tip}
+## Astuce
+Conseils et bonnes pratiques
+:::
+
+::: {.callout-warning}
+## Attention
+Points importants nécessitant vigilance
+:::
+
+---
+
+## 🎨 Syntaxe des Callouts
+
+### Dans le script R
+
+```r
+# callout-note - Titre du callout
+# Contenu du callout sur plusieurs lignes.
+# Chaque ligne commence par #
+# 
+# Peut inclure des paragraphes.
+
+code_apres_callout <- "exemple"
+```
+
+---
+
+## 🎨 Types de Callouts
+
+### 5 types disponibles
+
+```r
+# callout-note - Information générale
+# callout-tip - Conseil, astuce
+# callout-warning - Attention requise
+# callout-caution - Prudence nécessaire
+# callout-important - Point crucial
+```
+
+---
+
+## 🎨 Exemple de Callout
+
+### Script R
+
+```r
+## Chargement des données ####
+
+# callout-important - Prérequis
+# Assurez-vous d'avoir installé le package readr :
+# install.packages("readr")
+
+library(readr)
+data <- read_csv("fichier.csv")
+```
+
+---
+
+## 🎨 Rendu du Callout
+
+::: {.callout-important}
+## Prérequis
+Assurez-vous d'avoir installé le package readr :  
+`install.packages("readr")`
+:::
+
+```r
+library(readr)
+data <- read_csv("fichier.csv")
+```
 
 ---
 
 ## 📊 Diagrammes Mermaid
+
+### Qu'est-ce que Mermaid ?
+
+::: {.incremental}
+- 📐 **Langage de diagrammes** : Syntaxe simple type Markdown
+- 🎨 **Rendu automatique** : Généré lors du rendu Quarto
+- 🔄 **Intégré nativement** : Pas d'extension nécessaire
+- 📊 **Multiples types** : Flowcharts, séquences, Gantt, classes...
+:::
+
+---
+
+## 📊 Syntaxe Mermaid dans quartify
+
+### Dans le script R
 
 ```r
 #| mermaid
@@ -287,146 +873,427 @@ flowchart TD
     C -->|Non| B
 ```
 
-::: {.fragment}
-Types supportés : flowcharts, séquence, classes, états, Gantt...
+::: {.callout-note}
+Utiliser les balises `#|` pour les options du chunk
 :::
 
 ---
 
-## 📑 Tabsets
+## 📊 Types de diagrammes Mermaid
+
+### Flowchart
+
+```r
+#| mermaid
+#| eval: true
+flowchart LR
+    A[Raw data] --> B[Cleaning]
+    B --> C[Analysis]
+    C --> D[Visualization]
+    D --> E[Report]
+```
+
+![](images/flowchart_LR.png)
+
+---
+
+## 📊 Types de diagrammes Mermaid
+
+### Diagramme de séquence
+
+```r
+#| mermaid
+#| eval: true
+sequenceDiagram
+    User->>API: Request
+    API->>Database: Query
+    Database-->>API: Results
+    API-->>User: Response
+```
+
+![](images/sequence_diagram.png)
+
+---
+
+## 📊 Types de diagrammes Mermaid
+
+### Diagramme de classes
+
+```r
+#| mermaid
+#| eval: true
+classDiagram
+    class Animal {
+        +String nom
+        +int age
+        +eat()
+    }
+    class Dog {
+        +bark()
+    }
+    Animal <|-- Dog
+```
+
+![](images/class_diagram.png)
+
+---
+
+## 📊 Types de diagrammes Mermaid
+
+### Gantt (planning)
+
+```r
+#| mermaid
+#| eval: true
+gantt
+    title Project planning
+    dateFormat YYYY-MM-DD
+    section Phase 1
+    Data collection :2025-01-01, 30d
+    Cleaning        :2025-01-31, 20d
+    section Phase 2
+    Analysis        :2025-02-20, 30d
+
+```
+
+![](images/gantt.png)
+
+---
+
+## 📑 Tabsets - Organisation en onglets
+
+### Qu'est-ce que c'est ?
+
+::: {.incremental}
+- [Lien vers la documentation](https://quarto.org/docs/interactive/layout.html#tabset-panel)
+- 📑 **Onglets interactifs** : Organiser le contenu
+- 👆 **Cliquable** : L'utilisateur choisit quoi voir
+- 🎯 **Gain de place** : Éviter trop de scrolling
+- 📊 **Comparaison** : Afficher différentes vues
+:::
+
+---
+
+## 📑 Syntaxe des Tabsets
+
+### Dans le script R
 
 ```r
 # tabset
 
-# tab - Résumé
-# Afficher les statistiques
+# tab - Onglet 1
+# Description du premier onglet
 
-summary(data)
+code_onglet1 <- "exemple"
 
-# tab - Structure
-# Montrer la structure
+# tab - Onglet 2
+# Description du second onglet
 
-str(data)
+code_onglet2 <- "autre exemple"
 ```
 
-::: {.fragment}
-Organise le contenu en onglets interactifs
-:::
-
 ---
 
-## ✨ Nouveauté : Quarto Books
+## 📑 Exemple de Tabset
 
-::: {.incremental}
-- 📚 **Conversion de répertoires** → Livres Quarto navigables
-- 🗂️ **Structure automatique** : Un chapitre par script
-- 📑 **Navigation intégrée** : Sidebar avec tous les chapitres
-- 🎯 **Activé par défaut** avec `rtoqmd_dir()`
-- 🔧 **Personnalisable** : Répertoire de sortie configurable
-:::
-
----
-
-## 🔍 Qualité du code
-
-### Intégration avec styler et lintr
-
-::: {.incremental}
-- ✅ **use_styler** : Affiche le code formaté (tidyverse style)
-- ✅ **use_lintr** : Identifie les problèmes de qualité
-- ✅ **apply_styler** : Applique le formatage directement (⚠️ modifie le fichier)
-- 📑 **Tabsets interactifs** : Code original / Formaté / Issues
-:::
-
----
-
-## 🔍 Exemple qualité du code
+### Script R
 
 ```r
-# Suggestions de style dans des onglets
-rtoqmd("mon_script.R", "output.qmd", 
+## Exploration des données ####
+
+# tabset
+
+# tab - Résumé
+# Statistiques descriptives
+
+summary(iris)
+
+# tab - Structure
+# Structure du dataset
+
+str(iris)
+
+# tab - Aperçu
+# Premières lignes
+
+head(iris)
+```
+
+---
+
+## 📑 Rendu du Tabset
+
+![](images/tabset_example.png)
+
+---
+
+## 🔍 Qualité du code - styler
+
+### Qu'est-ce que styler ?
+
+::: {.incremental}
+- ✨ **Formatage automatique** : Suit le [style guide tidyverse](https://style.tidyverse.org/)
+- 🎯 **Cohérence** : Code uniforme dans tout le projet
+- 📏 **Lisibilité** : Indentation, espaces, sauts de ligne
+- 🔧 **Intégré quartify** : Afficher ou appliquer le formatage
+:::
+
+---
+
+## 🔍 Utilisation de styler
+
+### Option 1 : Afficher les suggestions
+
+```r
+rtoqmd("script.R", 
        use_styler = TRUE)
 
-# Style + lint
-rtoqmd("mon_script.R", "output.qmd",
-       use_styler = TRUE,
-       use_lintr = TRUE)
+# Génère un tabset avec :
+# - "Code original" : Votre code
+# - "Code formaté" : Version stylée
+```
 
-# Appliquer directement (⚠️ modifie l'original)
-rtoqmd("mon_script.R", "output.qmd",
+::: {.callout-note}
+N'applique PAS les modifications, juste une suggestion
+:::
+
+---
+
+## 🔍 Utilisation de styler
+
+### Option 2 : Appliquer directement
+
+```r
+rtoqmd("script.R", 
        apply_styler = TRUE)
 ```
 
----
-
-## 🎨 Thèmes Quarto
-
-### Thèmes clairs
-cosmo, flatly, journal, litera, lumen, lux, materia, minty, morph, pulse, quartz, sandstone, simplex, sketchy, spacelab, united, vapor, yeti, zephyr
-
-### Thèmes sombres
-darkly, cyborg, slate, solar, superhero
+::: {.callout-warning}
+## ⚠️ Attention !
+Modifie le fichier R source directement. Faites un backup !
+:::
 
 ---
 
-## 🎨 Exemple de thème
+## 🔍 Exemple de formatage styler
+
+### Avant (original)
 
 ```r
-# Thème clair "flatly"
-rtoqmd("mon_script.R", theme = "flatly")
+x=1+2
+if(x>0){
+print("positif")}
+df<-data.frame(a=1:3,b=4:6)
+```
 
-# Thème sombre "darkly"
-rtoqmd("mon_script.R", theme = "darkly")
+### Après (formaté)
+
+```r
+x <- 1 + 2
+if (x > 0) {
+  print("positif")
+}
+df <- data.frame(a = 1:3, b = 4:6)
 ```
 
 ---
 
-## 📤 Sortie générée
+## 🔍 Qualité du code - lintr
 
-Le document .qmd contient :
+### Qu'est-ce que lintr ?
 
 ::: {.incremental}
-- ✅ En-tête YAML complet
-- ✅ Structure d'en-têtes depuis sections RStudio
-- ✅ Explications textuelles depuis commentaires
-- ✅ Blocs de code exécutables ou statiques
-- ✅ Table des matières navigable
+- 🔍 **Analyse statique** : Détecte problèmes potentiels
+- ⚠️ **Warnings** : Syntaxe, style, erreurs potentielles
+- 📊 **Bonnes pratiques** : Conventions R recommandées
+- 🔧 **Intégré quartify** : Affiche les issues dans un tabset
 :::
+
+---
+
+## 🔍 Utilisation de lintr
+
+```r
+rtoqmd("script.R", 
+       use_lintr = TRUE)
+
+# Génère un tabset avec :
+# - "Code original" : Votre code
+# - "Issues" : Liste des problèmes détectés
+```
+
+---
+
+## 🔍 Combiner styler + lintr
+
+```r
+rtoqmd("script.R", 
+       use_styler = TRUE,
+       use_lintr = TRUE)
+
+# Génère un tabset avec 3 onglets :
+# - "Code original"
+# - "Code formaté" (suggestion styler)
+# - "Issues" (problèmes lintr)
+```
+
+::: {.callout-tip}
+Parfait pour la revue de code !
+:::
+
+---
+
+## 🔍 Types de problèmes détectés par lintr
+
+::: {.incremental}
+- 🚫 **Syntaxe** : Erreurs de code
+- 📏 **Longueur de ligne** : > 80 caractères
+- 🔤 **Naming** : Conventions de nommage
+- ⚠️ **Variables non utilisées**
+- 🔄 **Code dupliqué**
+- 📦 **Packages** : Dépendances manquantes
+- 🎨 **Style** : Indentation, espaces...
+:::
+
+---
+
+## Rendu de styler et lintr
+
+
+
+![](images/record_quartify.mp4)
+
+
+## 🎨 Thèmes Quarto disponibles
+
+### Thèmes clairs (19)
+
+cosmo, flatly, journal, litera, lumen, lux, materia, minty, morph, pulse, quartz, sandstone, simplex, sketchy, spacelab, united, vapor, yeti, zephyr
+
+### Thèmes sombres (6)
+
+darkly, cyborg, slate, solar, superhero, vapor
+
+---
+
+## 🎨 Choix du thème
+
+### Avec l'interface
+
+- Menu déroulant avec aperçu
+- Prévisualisation en temps réel
+
+### En ligne de commande
+
+```r
+rtoqmd("script.R", theme = "flatly")
+```
+
+---
+
+## 🎨 Exemples de thèmes
+
+### Thème "cosmo" (défaut)
+
+- 🎨 Design moderne et épuré
+- 📱 Très responsive
+- 🔵 Palette bleue professionnelle
+
+### Thème "darkly"
+
+- 🌙 Fond sombre (dark mode)
+- 👁️ Confortable pour les yeux
+- 💻 Apprécié des développeurs
 
 ---
 
 ## 🔄 Intégration CI/CD
 
-### GitHub Actions
+### Pourquoi automatiser ?
+
+::: {.incremental}
+- 📅 **Documentation toujours à jour** : À chaque commit
+- 🤖 **Pas d'oubli** : Automatique
+- 👥 **Collaboration** : Toute l'équipe bénéficie
+- 🚀 **Déploiement** : Publication auto sur Gitlab/GitHub Pages par exemple
+:::
+
+---
+
+## 🔄 GitHub Actions - Configuration
+
+### Fichier .github/workflows/quartify.yml
 
 ```yaml
-- name: Générer documentation
-  run: |
-    library(quartify)
-    rtoqmd_dir("scripts/", render = TRUE, 
-               author = "Équipe Data")
-  shell: Rscript {0}
+name: Generate Documentation
 
-- uses: actions/upload-artifact@v4
-  with:
-    name: documentation
-    path: |
-      scripts/**/*.qmd
-      scripts/**/*.html
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  generate-docs:
+    runs-on: ubuntu-latest
 ```
 
 ---
 
-## 🔄 Intégration CI/CD (suite)
+## 🔄 GitHub Actions - Suite
 
-### GitLab CI
+```yaml
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: '4.5.1'
+      
+      - name: Install quartify
+        run: |
+          install.packages("devtools")
+          devtools::install_github("ddotta/quartify")
+        shell: Rscript {0}
+```
+
+---
+
+## 🔄 GitHub Actions - Génération
+
+```yaml
+      - name: Generate documentation
+        run: |
+          library(quartify)
+          rtoqmd_dir("scripts/", 
+                     render = TRUE,
+                     author = "Équipe Data")
+        shell: Rscript {0}
+      
+      - uses: actions/upload-artifact@v4
+        with:
+          name: documentation
+          path: |
+            scripts/**/*.qmd
+            scripts/**/*.html
+```
+
+---
+
+## 🔄 GitLab CI - Configuration
+
+### Fichier .gitlab-ci.yml
 
 ```yaml
 generate-docs:
   image: rocker/r-ver:4.5.1
+  stage: build
+  before_script:
+    - R -e "install.packages('devtools')"
+    - R -e "devtools::install_github('ddotta/quartify')"
   script:
     - R -e "quartify::rtoqmd_dir('scripts/', 
-            render = TRUE, author = 'Équipe Data')"
+            render = TRUE)"
   artifacts:
     paths:
       - scripts/**/*.qmd
@@ -435,79 +1302,112 @@ generate-docs:
 
 ---
 
-## 🎯 Exemple concret
+## 🔄 Azure Pipelines - Configuration
 
-::: {.columns}
-::: {.column width="50%"}
-### Script R
-```r
-## Analyse ####
+```yaml
+- task: UseRVersion@1
+  inputs:
+    versionSpec: '4.5.x'
 
-# Compter par espèce
+- script: |
+    R -e "install.packages('devtools')"
+    R -e "devtools::install_github('ddotta/quartify')"
+    R -e "quartify::rtoqmd_dir('scripts/', render = TRUE)"
+  displayName: 'Generate documentation'
 
-iris |> 
-  count(Species)
-
-### Filtrage ====
-
-# Filtrer sur setosa
-
-iris |> 
-  filter(Species == "setosa")
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: 'scripts'
+    artifactName: 'documentation'
 ```
-:::
 
-::: {.column width="50%"}
-### Résultat Quarto
-- En-tête "Analyse"
-- Texte : "Compter par espèce"
-- Bloc de code R
-- Sous-en-tête "Filtrage"
-- Texte : "Filtrer sur setosa"
-- Bloc de code R
-:::
+---
+
+## 💡 Bonnes pratiques
+
+### 1. Structure du code
+
+::: {.incremental}
+- ✅ Utilisez les **sections RStudio** (`####`, `====`, `----`)
+- ✅ **Hiérarchie logique** : Niveau 2 → 3 → 4
+- ✅ **Noms explicites** : "Import données" > "Import"
+- ✅ **Granularité** : Pas trop de sections, pas trop peu
 :::
 
 ---
 
 ## 💡 Bonnes pratiques
 
+### 2. Commentaires
+
 ::: {.incremental}
-1. **Structurez** avec des sections RStudio
-2. **Commentez** généreusement (une ligne = un `#`)
-3. **Utilisez les métadonnées** en début de script
-4. **Exploitez** les callouts pour les points importants
-5. **Ajoutez** des diagrammes Mermaid pour la visualisation
-6. **Organisez** le contenu complexe avec des tabsets
-7. **Créez des Books** pour projets multi-fichiers
-8. **Vérifiez la qualité** avec styler/lintr
-9. **Testez** différents thèmes pour trouver le meilleur
+- **Une idée = un `#`** : Pas de `##` dans les commentaires texte
+- **Phrases complètes** : Majuscule, ponctuation
+- **Contexte** : Expliquer le "pourquoi", pas le "quoi" dans les commentaires
 :::
 
 ---
 
-## 🔗 Ressources
+## 💡 Bonnes pratiques
+
+### 3. Organisation
+
+::: {.incremental}
+- ✅ **Métadonnées en début** : Title, Author, Date, Description
+- ✅ **Sections logiques** : Introduction → Analyse → Conclusion
+- ✅ **Callouts pour points clés** : Highlights importants
+- ✅ **Tabsets pour comparaisons** : Différentes approches
+:::
+
+---
+
+## 💡 Bonnes pratiques
+
+### 4. Qualité
+
+::: {.incremental}
+- ✅ **Styler régulièrement** : Code cohérent
+- ✅ **Lintr avant commit** : Pas de surprises
+- ✅ **Tester le rendu** : Vérifier HTML généré
+- ✅ **Choisir thème adapté** : Public cible
+:::
+
+---
+
+## 💡 Bonnes pratiques
+
+### 5. Workflow
+
+::: {.incremental}
+- ✅ **Versionner .qmd** : Tracer les changements
+- ✅ **CI/CD** : Documentation auto
+- ✅ **Quarto Books** : Projets multi-fichiers
+:::
+
+---
+
+## 🔗 Ressources et documentation
+
+### Documentation officielle
 
 ::: {.incremental}
 - 📦 **GitHub** : [github.com/ddotta/quartify](https://github.com/ddotta/quartify)
-- 📖 **Documentation** : [ddotta.github.io/quartify](https://ddotta.github.io/quartify/)
+- 📖 **Site documentation** : [ddotta.github.io/quartify](https://ddotta.github.io/quartify/)
 - 🌐 **Version web** : [quartify.lab.sspcloud.fr](https://quartify.lab.sspcloud.fr/)
-- 🎓 **Vignette** : [Getting Started](https://ddotta.github.io/quartify/articles/getting-started.html)
-- 📄 **Exemples** : Dans le package (`inst/examples/`)
 :::
 
 ---
 
-## 🎯 Points clés à retenir
+## 🔗 Ressources et documentation (suite)
+
+### Guides et tutoriels
 
 ::: {.incremental}
-1. **Simplicité** : Commentaires naturels → Documentation HTML
-2. **Puissance** : Toutes les fonctionnalités modernes de Quarto
-3. **Flexibilité** : Interface Shiny, ligne de commande, ou web
-4. **Évolutivité** : Quarto Books pour projets complexes
-5. **Qualité** : Intégration styler/lintr pour code propre
-6. **Automatisation** : Intégration CI/CD facile
-7. **Future-proof** : Basé sur Quarto, l'avenir de R Markdown
+- 🎓 **[Getting Started](https://ddotta.github.io/quartify/articles/getting-started.html)**
+- 🎓 **[Advanced Features](https://ddotta.github.io/quartify/articles/advanced-features.html)**
+- 📝 **Exemples** : Dans le repo (`inst/examples/`)
+- 📚 **Quarto docs** : [quarto.org](https://quarto.org)
+- 💬 **Issues GitHub** : [Questions et support](https://github.com/ddotta/quartify/issues)
 :::
 
 ---
@@ -515,28 +1415,11 @@ iris |>
 ## 🙏 Merci !
 
 ::: {.columns}
-::: {.column width="50%"}
+::: {.column width="60%"}
 ### Questions ?
 
-📧 Contact : GitHub Issues
-
-🌟 N'oubliez pas de ⭐ le projet !
+📧 **GitHub Issues** pour questions/bugs  
+🌟 **Star le projet** sur GitHub !  
+🤝 **Contributions** bienvenues
 :::
-
-::: {.column width="50%"}
-![](https://raw.githubusercontent.com/ddotta/quartify/main/man/figures/hex_quartify.png){width=300}
-:::
-:::
-
----
-
-## 🚀 Démo en direct
-
-::: {.callout-tip icon=false}
-## Essayons ensemble !
-
-1. Visitez [quartify.lab.sspcloud.fr](https://quartify.lab.sspcloud.fr/)
-2. Téléversez un script R d'exemple
-3. Configurez le titre et le thème
-4. Générez et téléchargez le résultat !
 :::
