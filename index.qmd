@@ -765,6 +765,19 @@ table(iris$Species)
 
 ---
 
+### Snippets RStudio
+
+Installez des snippets de code utiles pour une écriture de script R plus rapide avec `install_quartify_snippets()`.
+
+Après installation et redémarrage de RStudio, vous pouvez utiliser :
+
+- **`header`** + Tab : Insérer un modèle de métadonnées de document
+- **`callout`** + Tab : Insérer un modèle de callout
+- **`mermaid`** + Tab : Insérer un modèle de diagramme Mermaid
+- **`tabset`** + Tab : Insérer un modèle de tabset
+
+---
+
 ## 🎨 Callouts - Qu'est-ce que c'est ?
 
 ::: {.callout-note}
