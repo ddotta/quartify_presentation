@@ -1244,6 +1244,50 @@ rtoqmd("script.R", theme = "flatly")
 
 ---
 
+## 🔄 GitLab CI - Configuration
+
+### Fichier .gitlab-ci.yml
+
+```yaml
+generate-docs:
+  image: ddottaagr/quartify:latest
+  stage: build
+  script:
+    - R -e "quartify::rtoqmd_dir('scripts/', 
+            render = TRUE)"
+  artifacts:
+    paths:
+      - scripts/**/*.qmd
+      - scripts/**/*.html
+```
+
+---
+
+## 🔄 GitLab CI (interne MAASA)- Configuration
+
+### Fichier .gitlab-ci.yml
+
+Voir [ce projet](https://gitlab.forge.agriculture.rie.gouv.fr/ssp/bmis/divers/quartify_gur).
+
+```yaml
+variables:
+  DOCKER_AUTH_CONFIG: >
+    {"auths": {"${FORGE_REVERSE_HOST}": {"auth": "${ARTIFACTORY_ROBOT_AUTH_TOKEN}"}}}
+
+generate-docs:
+  image:
+    name: ${FORGE_REVERSE_HOST}/hub-docker-prod-remote/ddottaagr/quartify:latest
+  stage: build
+  script:
+    - R -e "quartify::rtoqmd_dir('scripts/', render = TRUE)"
+  artifacts:
+    paths:
+      - scripts/**/*.qmd
+      - scripts/**/*.html
+```
+
+---
+
 ## 🔄 GitHub Actions - Configuration
 
 ### Fichier .github/workflows/quartify.yml
@@ -1300,28 +1344,6 @@ jobs:
           path: |
             scripts/**/*.qmd
             scripts/**/*.html
-```
-
----
-
-## 🔄 GitLab CI - Configuration
-
-### Fichier .gitlab-ci.yml
-
-```yaml
-generate-docs:
-  image: rocker/r-ver:4.5.1
-  stage: build
-  before_script:
-    - R -e "install.packages('devtools')"
-    - R -e "devtools::install_github('ddotta/quartify')"
-  script:
-    - R -e "quartify::rtoqmd_dir('scripts/', 
-            render = TRUE)"
-  artifacts:
-    paths:
-      - scripts/**/*.qmd
-      - scripts/**/*.html
 ```
 
 ---

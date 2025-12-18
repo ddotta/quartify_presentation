@@ -1244,6 +1244,28 @@ rtoqmd("script.R", theme = "flatly")
 
 ---
 
+## 🔄 GitLab CI - Configuration
+
+### File .gitlab-ci.yml
+
+```yaml
+generate-docs:
+  image: rocker/r-ver:4.5.1
+  stage: build
+  before_script:
+    - R -e "install.packages('devtools')"
+    - R -e "devtools::install_github('ddotta/quartify')"
+  script:
+    - R -e "quartify::rtoqmd_dir('scripts/', 
+            render = TRUE)"
+  artifacts:
+    paths:
+      - scripts/**/*.qmd
+      - scripts/**/*.html
+```
+
+---
+
 ## 🔄 GitHub Actions - Configuration
 
 ### File .github/workflows/quartify.yml
@@ -1304,27 +1326,6 @@ jobs:
 
 ---
 
-## 🔄 GitLab CI - Configuration
-
-### File .gitlab-ci.yml
-
-```yaml
-generate-docs:
-  image: rocker/r-ver:4.5.1
-  stage: build
-  before_script:
-    - R -e "install.packages('devtools')"
-    - R -e "devtools::install_github('ddotta/quartify')"
-  script:
-    - R -e "quartify::rtoqmd_dir('scripts/', 
-            render = TRUE)"
-  artifacts:
-    paths:
-      - scripts/**/*.qmd
-      - scripts/**/*.html
-```
-
----
 
 ## 💡 Best practices
 
