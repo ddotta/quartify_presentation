@@ -1,6 +1,8 @@
 _site/
 *.html
+*.pdf
 .quarto/
 .Rproj.user
 
 /.quarto/
+/tests_quartify/
