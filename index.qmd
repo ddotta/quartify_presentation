@@ -720,6 +720,22 @@ Commentaires **précédés d'espace** ou **en fin de ligne** restent dans le blo
 
 ---
 
+## Commentaires cachés
+
+Vous pouvez inclure des notes privées ou des commentaires de développement dans vos scripts R qui n'apparaîtront pas dans le rendu final. Les commentaires qui commencent par `#` immédiatement suivi d'un caractère non-espace sont complètement ignorés :
+
+```r
+# Ce commentaire APPARAITRA dans la sortie
+
+#Ceci n'apparaitra PAS (pas d'espace après #)
+#TODO: Ceci non plus
+#DEBUG code ci-dessous
+
+# Ce commentaire régulier APPARAITRA à nouveau
+```
+
+---
+
 ## 📝 Exemples de conversion
 
 ### Script R
