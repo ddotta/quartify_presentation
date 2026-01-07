@@ -256,7 +256,7 @@ rtoqmd("mon_script.R", "output.qmd")
 
 ## 💻 Interface Shiny - Détails
 
-### Onglet "Convertir un fichier"
+### "Convertir un fichier"
 
 ::: {.incremental}
 - 📁 Sélection du fichier R source
@@ -271,7 +271,7 @@ rtoqmd("mon_script.R", "output.qmd")
 
 ## 💻 Interface Shiny - Détails (suite)
 
-### Onglet "Convertir un répertoire"
+### "Convertir un répertoire"
 
 ::: {.incremental}
 - 📂 Sélection d'un répertoire de scripts
@@ -313,6 +313,8 @@ rtoqmd(
   open_html = TRUE      # Ouvrir HTML automatiquement ?
 )
 ```
+
+[Syntaxe complète](https://ddotta.github.io/quartify/reference/rtoqmd.html)
 
 ---
 
