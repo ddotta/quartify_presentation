@@ -41,7 +41,6 @@ Un package R qui **convertit automatiquement** vos scripts R en documents Quarto
 ::: {.incremental}
 - 📝 Scripts R avec commentaires utiles mais **peu lisibles**
 - 👥 Difficile à **partager** avec des non-développeurs
-- 📊 Analyses complexes **mal documentées**
 - 🔄 **Duplication** entre code et documentation
 - ⏰ Temps perdu à créer manuellement de la documentation
 :::
