@@ -715,7 +715,7 @@ Comments **preceded by space** or **at end of line** stay in the code block!
 
 ---
 
-## Hidden Comments
+## 📝 Hidden Comments
 
 You can include private notes or development comments in your R scripts that won't appear in the rendered output. Comments that start with `#` immediately followed by a non-space character are completely ignored: vos scripts R qui n'apparaîtront pas dans le rendu final. Les commentaires qui commencent par `#` immédiatement suivi d'un caractère non-espace sont complètement ignorés :
 
