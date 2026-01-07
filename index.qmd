@@ -318,31 +318,14 @@ rtoqmd(
 
 ---
 
-## 🔧 Paramètres de rtoqmd()
+## 🔧 Paramètres de personnalisation pour rtoqmd()
 
-### Paramètres de base
-
-::: {.incremental}
-- **input_file** : Chemin du script R source
-- **output_file** : Nom du fichier .qmd (par défaut : même nom)
-- **title** : Titre dans l'en-tête YAML (sinon depuis métadonnées ou nom fichier)
-- **author** : Auteur (sinon depuis métadonnées)
-- **format** : pour l'instant que "html"
-:::
-
----
-
-## 🔧 Paramètres de rtoqmd() (suite)
-
-### Paramètres de personnalisation
 
 ::: {.incremental}
 - **theme** : Parmi 25 thèmes Quarto (défaut: "cosmo")
-- **number_sections** : Numéroter les sections ? (défaut: FALSE)
+- **code_fold** : Plier les blocs de code (défaut : FALSE)
+- **number_sections** : Numéroter les sections ? (défaut: TRUE)
 - **show_source_line** : Afficher les numéros de ligne originaux dans les chunks de code (défaut : TRUE)
-- **toc** : Inclure table des matières ? (défaut: TRUE)
-- **toc_title** : Titre de la TOC (défaut: "Sommaire")
-- **toc_depth** : Profondeur de la TOC (défaut: 3)
 :::
 
 ---
@@ -352,9 +335,9 @@ rtoqmd(
 ### Paramètres de sortie
 
 ::: {.incremental}
-- **render** : Générer le HTML ? (défaut: TRUE)
+- **render_html** : Générer le HTML ? (défaut: TRUE)
 - **output_html_file** : Nom du fichier HTML de sortie
-- **open_html** : Ouvrir le HTML ? (défaut: TRUE)
+- **open_html** : Ouvrir le HTML ? (défaut: FALSE)
 - **use_styler** : Afficher suggestions de formatage (défaut: FALSE)
 - **use_lintr** : Afficher problèmes de qualité (défaut: FALSE)
 - ⚠ **apply_styler** : Appliquer formatage (défaut: FALSE)
@@ -371,7 +354,6 @@ rtoqmd(
 rtoqmd("analyse.R")
 
 # Génère : analyse.qmd + analyse.html
-# Ouvre le HTML dans le navigateur
 ```
 
 ---
@@ -418,10 +400,9 @@ rtoqmd(
 ```r
 rtoqmd(
   input_file = "analyse.R",
-  output_file = "analyse.qmd",
+  output_file = "analyse_qualite.qmd",
   use_styler = TRUE,    # Afficher suggestions de style
-  use_lintr = TRUE,     # Afficher problèmes de qualité
-  render = TRUE
+  use_lintr = TRUE     # Afficher problèmes de qualité
 )
 
 # Génère des tabsets avec :
@@ -441,12 +422,14 @@ rtoqmd_dir(
   input_dir,              # Répertoire contenant les .R
   output_dir = NULL,      # Répertoire de sortie (défaut: input_dir)
   create_book = TRUE,     # Créer un Quarto Book ?
-  author = NULL,
-  render = TRUE,
-  output_html_dir = NULL,
+  author = "Your name",   # Auteur
+  render_html = FALSE,    # Générer fichier html
+  output_html_dir = NULL, # Chemin vers le répertoire de création des html
   exclude_pattern = NULL  # Pattern pour exclure fichiers
 )
 ```
+
+[Syntaxe complète](https://ddotta.github.io/quartify/reference/rtoqmd_dir.html)
 
 ---
 
@@ -488,7 +471,7 @@ rtoqmd_dir("scripts/",
 ```r
 # Exclure les fichiers de test
 rtoqmd_dir(
-  input_dir = "scripts/",
+  dir_path = "scripts/",
   exclude_pattern = "^test_.*\\.R$", 
   author = "Équipe Data",
   theme = "darkly"
@@ -506,13 +489,12 @@ rtoqmd_dir(
 ```r
 # Sortie dans un répertoire dédié
 rtoqmd_dir(
-  input_dir = "R/analyses/",
+  dir_path = "R/analyses/",
   output_dir = "documentation/",
-  output_html_dir = "docs/html/",
-  create_book = TRUE,
+  book_title  = "Documentation_projet_SSP_2026",
   author = "Mon équipe",
   theme = "cosmo",
-  render = TRUE
+  render_html = TRUE
 )
 ```
 

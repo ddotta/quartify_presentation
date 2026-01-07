@@ -152,7 +152,13 @@ library(quartify)
 
 ---
 
-## 🛠️ Installation
+## 🛠️ Installation (continued)
+
+### From Cerise and tar.gz file
+
+```r
+install.packages("~/CERISE/01-Espace-de-Partage/SSP/BMIS/__packages__/quartify_1.1.1.tar.gz", repos = NULL, type = "source")
+```
 
 ### From CRAN (when available)
 
@@ -302,6 +308,7 @@ rtoqmd(
   output_file = NULL,     # Output .qmd file (auto if NULL)
   title = "My title",     # Document title
   author = "Your name",   # Author
+  theme = NULL,           # Quarto theme
   render_html = TRUE,     # Generate HTML
   output_html_file = NULL,# Output .html file (auto if NULL)
   open_html = FALSE,      # Open HTML automatically
@@ -312,7 +319,19 @@ rtoqmd(
 
 ---
 
-## 🔧 rtoqmd() parameters
+## 🔧 Customization parameters for rtoqmd()
+
+
+::: {.incremental}
+- **theme**: Among 25 Quarto themes (default: "cosmo")
+- **code_fold**: Fold code blocks (default: FALSE)
+- **number_sections**: Number sections? (default: TRUE)
+- **show_source_line**: Display original line numbers in code chunks (default: TRUE)
+:::
+
+---
+
+## 🔧 rtoqmd() parameters (continued)
 
 ### Basic parameters
 
@@ -328,27 +347,12 @@ rtoqmd(
 
 ## 🔧 rtoqmd() parameters (continued)
 
-### Customization parameters
-
-::: {.incremental}
-- **theme**: Among 25 Quarto themes (default: "cosmo")
-- **number_sections**: Number sections? (default: FALSE)
-- **show_source_line**: Display original line numbers in code chunks (default: TRUE)
-- **toc**: Include table of contents? (default: TRUE)
-- **toc_title**: TOC title (default: "Contents")
-- **toc_depth**: TOC depth (default: 3)
-:::
-
----
-
-## 🔧 rtoqmd() parameters (continued)
-
 ### Output parameters
 
 ::: {.incremental}
-- **render**: Generate HTML? (default: TRUE)
+- **render_html**: Generate HTML? (default: TRUE)
 - **output_html_file**: Output HTML filename
-- **open_html**: Open HTML? (default: TRUE)
+- **open_html**: Open HTML? (default: FALSE)
 - **use_styler**: Display formatting suggestions (default: FALSE)
 - **use_lintr**: Display quality issues (default: FALSE)
 - ⚠ **apply_styler**: Apply formatting (default: FALSE)
@@ -377,7 +381,7 @@ rtoqmd("analysis.R")
 ```r
 # Generate only the .qmd
 rtoqmd("analysis.R", 
-       render = FALSE)
+       render_html = FALSE)
 
 # Generates: analysis.qmd only
 ```
@@ -397,7 +401,7 @@ rtoqmd(
   format = "html",
   theme = "flatly",
   number_sections = TRUE,
-  render = TRUE,
+  render_html = TRUE,
   output_html_file = "docs/sales_report_2024.html",
   open_html = TRUE
 )
@@ -412,10 +416,9 @@ rtoqmd(
 ```r
 rtoqmd(
   input_file = "analysis.R",
-  output_file = "analysis.qmd",
+  output_file = "analysis_quality.qmd",
   use_styler = TRUE,    # Display style suggestions
-  use_lintr = TRUE,     # Display quality issues
-  render = TRUE
+  use_lintr = TRUE     # Display quality issues
 )
 
 # Generates tabsets with:
@@ -435,12 +438,14 @@ rtoqmd_dir(
   input_dir,              # Directory containing .R files
   output_dir = NULL,      # Output directory (default: input_dir)
   create_book = TRUE,     # Create a Quarto Book?
-  author = NULL,
-  render = TRUE,
-  output_html_dir = NULL,
+  author = "Your name",   # Author
+  render_html = FALSE,    # Generate html file
+  output_html_dir = NULL, # Path to the html output directory
   exclude_pattern = NULL  # Pattern to exclude files
 )
 ```
+
+[Complete Syntax](https://ddotta.github.io/quartify/reference/rtoqmd_dir.html)
 
 ---
 
@@ -500,13 +505,12 @@ rtoqmd_dir(
 ```r
 # Output to a dedicated directory
 rtoqmd_dir(
-  input_dir = "R/analyses/",
+  dir_path = "R/analyses/",
   output_dir = "documentation/",
-  output_html_dir = "docs/html/",
-  create_book = TRUE,
+  book_title  = "Documentation_SSP_project_2026",
   author = "My team",
   theme = "cosmo",
-  render = TRUE
+  render_html = TRUE
 )
 ```
 
@@ -1265,14 +1269,36 @@ rtoqmd("script.R", theme = "flatly")
 
 ```yaml
 generate-docs:
-  image: rocker/r-ver:4.5.1
+  image: ddottaagr/quartify:latest
   stage: build
-  before_script:
-    - R -e "install.packages('devtools')"
-    - R -e "devtools::install_github('ddotta/quartify')"
   script:
     - R -e "quartify::rtoqmd_dir('scripts/', 
-            render = TRUE)"
+            render_html = TRUE)"
+  artifacts:
+    paths:
+      - scripts/**/*.qmd
+      - scripts/**/*.html
+```
+
+---
+
+## 🔄 GitLab CI (internal MAASA) - Configuration
+
+### File .gitlab-ci.yml
+
+See [this project](https://gitlab.forge.agriculture.rie.gouv.fr/ssp/bmis/divers/quartify_gur).
+
+```yaml
+variables:
+  DOCKER_AUTH_CONFIG: >
+    {"auths": {"${FORGE_REVERSE_HOST}": {"auth": "${ARTIFACTORY_ROBOT_AUTH_TOKEN}"}}}
+
+generate-docs:
+  image:
+    name: ${FORGE_REVERSE_HOST}/hub-docker-prod-remote/ddottaagr/quartify:latest
+  stage: build
+  script:
+    - R -e "quartify::rtoqmd_dir('scripts/', render_html = TRUE)"
   artifacts:
     paths:
       - scripts/**/*.qmd
@@ -1327,7 +1353,7 @@ jobs:
         run: |
           library(quartify)
           rtoqmd_dir("scripts/", 
-                     render = TRUE,
+                     render_html = TRUE,
                      author = "Data Team")
         shell: Rscript {0}
       
@@ -1342,6 +1368,18 @@ jobs:
 ---
 
 ## 🔗 Resources and documentation
+
+### Official documentation
+
+::: {.incremental}
+- 📦 **GitHub**: [github.com/ddotta/quartify](https://github.com/ddotta/quartify)
+- 📖 **Documentation site**: [ddotta.github.io/quartify](https://ddotta.github.io/quartify/)
+- 🌐 **Web version**: [quartify.lab.sspcloud.fr](https://quartify.lab.sspcloud.fr/)
+:::
+
+---
+
+## 🔗 Resources and documentation (continued)
 
 ### Guides and tutorials
 
