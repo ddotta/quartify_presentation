@@ -115,7 +115,7 @@ Un package R qui **convertit automatiquement** vos scripts R en documents Quarto
 - 🌐 **Rendu HTML** : Optionnel avec ouverture automatique
 - 🎭 **25 thèmes Quarto** : Personnalisation visuelle
 - 🎨 **[Callouts](https://quarto.org/docs/authoring/callouts.html)** : Notes, tips, warnings...
-- 📑 **[Tabsets](https://quarto.org/docs/authoring/callouts.html)** : Organisation en onglets
+- 📑 **[Tabsets](https://quarto.org/docs/interactive/layout.html#tabset-panel)** : Organisation en onglets
 - 📊 **[Diagrammes Mermaid](https://quarto.org/docs/authoring/diagrams.html)** : Flowcharts, séquences...
 - 🔍 **Qualité du code** : Intégration styler/lintr
 :::

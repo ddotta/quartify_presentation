@@ -116,7 +116,7 @@ An R package that **automatically converts** your R scripts into Quarto document
 - 🌐 **HTML rendering**: Optional with automatic opening
 - 🎭 **25 Quarto themes**: Visual customization
 - 🎨 **[Callouts](https://quarto.org/docs/authoring/callouts.html)**: Notes, tips, warnings...
-- 📑 **[Tabsets](https://quarto.org/docs/authoring/callouts.html)**: Organization in tabs
+- 📑 **[Tabsets](https://quarto.org/docs/interactive/layout.html#tabset-panel)**: Organization in tabs
 - 📊 **[Mermaid Diagrams](https://quarto.org/docs/authoring/diagrams.html)**: Flowcharts, sequences...
 - 🔍 **Code quality**: styler/lintr integration
 :::
@@ -1341,71 +1341,7 @@ jobs:
 
 ---
 
-
-## 💡 Best practices
-
-### 1. Code structure
-
-::: {.incremental}
-- ✅ Use **RStudio sections** (`####`, `====`, `----`)
-- ✅ **Logical hierarchy**: Level 2 → 3 → 4
-- ✅ **Explicit names**: “Import data” > “Import”
-- ✅ **Granularity**: Not too many sections, not too few
-:::
-
----
-
-## 💡 Best practices
-
-### 2. Comments
-
-::: {.incremental}
-- **One idea = one `#`**: No `##` in text comments
-- **Complete sentences**: Capital letters, punctuation
-- **Context**: Explain the “why,” not the “what” in comments
-:::
-
----
-
-## 💡 Best practices
-
-### 3. Organization
-
-::: {.incremental}
-- ✅ **Metadata at the beginning**: Title, Author, Date, Description
-- ✅ **Logical sections**: Introduction → Analysis → Conclusion
-- ✅ **Callouts for key points**: Important highlights
-- ✅ **Tabsets for comparisons**: Different approaches
-:::
-
----
-
-## 💡 Best practices
-
-### 4. Quality
-
-::: {.incremental}
-- ✅ **Style regularly**: Consistent code
-- ✅ **Lintr before commit**: No surprises
-- ✅ **Test rendering**: Check generated HTML
-- ✅ **Choose a suitable theme**: Target audience
-:::
-
----
-
-## 💡 Best practices
-
-### 5. Workflow
-
-::: {.incremental}
-- ✅ **Version .qmd**: Track changes
-- ✅ **CI/CD**: Auto documentation
-- ✅ **Quarto Books**: Multi-file projects
-:::
-
----
-
-## 🔗 Resources and documentation (continued)
+## 🔗 Resources and documentation
 
 ### Guides and tutorials
 
