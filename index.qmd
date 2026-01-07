@@ -64,7 +64,6 @@ Un package R qui **convertit automatiquement** vos scripts R en documents Quarto
 
 ::: {.incremental}
 - 🚀 **Successeur officiel** de R Markdown (nouvelle syntaxe et fonctionnalités)
-- 🎨 **25 thèmes** prêts à l'emploi
 - 📐 **Diagrammes** : Mermaid intégré (flowcharts, séquences...)
 - 📱 **Responsive** : S'adapte à tous les écrans
 - 🔮 **Future-proof** : Développement actif et communauté croissante
@@ -154,6 +153,12 @@ library(quartify)
 ---
 
 ## 🛠️ Installation (suite)
+
+### Depuis Cerise et le fichier tar.gz
+
+```r
+install.packages("~/CERISE/01-Espace-de-Partage/SSP/BMIS/__packages__/quartify_1.0.0.tar.gz", repos = NULL, type = "source")
+```
 
 ### Depuis CRAN (quand disponible)
 
@@ -879,11 +884,11 @@ data <- read_csv("fichier.csv")
 ```r
 #| mermaid
 #| eval: true
-flowchart TD
-    A[Début] --> B[Traitement]
-    B --> C{Décision}
-    C -->|Oui| D[Fin]
-    C -->|Non| B
+# flowchart TD
+#     A[Début] --> B[Traitement]
+#     B --> C{Décision}
+#     C -->|Oui| D[Fin]
+#     C -->|Non| B
 ```
 
 ::: {.callout-note}
@@ -899,11 +904,11 @@ Utiliser les balises `#|` pour les options du chunk
 ```r
 #| mermaid
 #| eval: true
-flowchart LR
-    A[Raw data] --> B[Cleaning]
-    B --> C[Analysis]
-    C --> D[Visualization]
-    D --> E[Report]
+# flowchart LR
+#     A[Raw data] --> B[Cleaning]
+#     B --> C[Analysis]
+#     C --> D[Visualization]
+#     D --> E[Report]
 ```
 
 ![](images/flowchart_LR.png)
@@ -917,11 +922,11 @@ flowchart LR
 ```r
 #| mermaid
 #| eval: true
-sequenceDiagram
-    User->>API: Request
-    API->>Database: Query
-    Database-->>API: Results
-    API-->>User: Response
+# sequenceDiagram
+#     User->>API: Request
+#     API->>Database: Query
+#     Database-->>API: Results
+#     API-->>User: Response
 ```
 
 ![](images/sequence_diagram.png)
@@ -935,16 +940,16 @@ sequenceDiagram
 ```r
 #| mermaid
 #| eval: true
-classDiagram
-    class Animal {
-        +String nom
-        +int age
-        +eat()
-    }
-    class Dog {
-        +bark()
-    }
-    Animal <|-- Dog
+# classDiagram
+#     class Animal {
+#         +String nom
+#         +int age
+#         +eat()
+#     }
+#     class Dog {
+#         +bark()
+#     }
+#     Animal <|-- Dog
 ```
 
 ![](images/class_diagram.png)
@@ -958,15 +963,15 @@ classDiagram
 ```r
 #| mermaid
 #| eval: true
-gantt
-    title Project planning
-    dateFormat YYYY-MM-DD
-    section Phase 1
-    Data collection :2025-01-01, 30d
-    Cleaning        :2025-01-31, 20d
-    section Phase 2
-    Analysis        :2025-02-20, 30d
-
+# gantt
+#     title Project planning
+#     dateFormat YYYY-MM-DD
+#     section Phase 1
+#     Data collection :2025-01-01, 30d
+#     Cleaning        :2025-01-31, 20d
+#     section Phase 2
+#     Analysis        :2025-02-20, 30d
+# 
 ```
 
 ![](images/gantt.png)

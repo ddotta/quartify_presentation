@@ -879,11 +879,11 @@ data <- read_csv("file.csv")
 ```r
 #| mermaid
 #| eval: true
-flowchart TD
-    A[Start] --> B[Processing]
-    B --> C{Decision}
-    C -->|Yes| D[End]
-    C -->|No| B
+# flowchart TD
+#     A[Start] --> B[Processing]
+#     B --> C{Decision}
+#     C -->|Yes| D[End]
+#     C -->|No| B
 ```
 
 ::: {.callout-note}
@@ -899,11 +899,11 @@ Use `#|` tags for chunk options
 ```r
 #| mermaid
 #| eval: true
-flowchart LR
-    A[Raw data] --> B[Cleaning]
-    B --> C[Analysis]
-    C --> D[Visualization]
-    D --> E[Report]
+# flowchart LR
+#     A[Raw data] --> B[Cleaning]
+#     B --> C[Analysis]
+#     C --> D[Visualization]
+#     D --> E[Report]
 ```
 
 ![](images/flowchart_LR.png)
@@ -917,11 +917,11 @@ flowchart LR
 ```r
 #| mermaid
 #| eval: true
-sequenceDiagram
-    User->>API: Request
-    API->>Database: Query
-    Database-->>API: Results
-    API-->>User: Response
+# sequenceDiagram
+#     User->>API: Request
+#     API->>Database: Query
+#     Database-->>API: Results
+#     API-->>User: Response
 ```
 
 ![](images/sequence_diagram.png)
@@ -935,16 +935,16 @@ sequenceDiagram
 ```r
 #| mermaid
 #| eval: true
-classDiagram
-    class Animal {
-        +String name
-        +int age
-        +eat()
-    }
-    class Dog {
-        +bark()
-    }
-    Animal <|-- Dog
+# classDiagram
+#     class Animal {
+#         +String name
+#         +int age
+#         +eat()
+#     }
+#     class Dog {
+#         +bark()
+#     }
+#     Animal <|-- Dog
 ```
 
 ![](images/class_diagram.png)
@@ -958,15 +958,14 @@ classDiagram
 ```r
 #| mermaid
 #| eval: true
-gantt
-    title Project planning
-    dateFormat YYYY-MM-DD
-    section Phase 1
-    Data collection :2025-01-01, 30d
-    Cleaning        :2025-01-31, 20d
-    section Phase 2
-    Analysis        :2025-02-20, 30d
-
+#gantt
+#    title Project planning
+#    dateFormat YYYY-MM-DD
+#    section Phase 1
+#    Data collection :2025-01-01, 30d
+#    Cleaning        :2025-01-31, 20d
+#    section Phase 2
+#    Analysis        :2025-02-20, 30d
 ```
 
 ![](images/gantt.png)
