@@ -303,14 +303,14 @@ rtoqmd("mon_script.R", "output.qmd")
 
 ```r
 rtoqmd(
-  input_file,           # Fichier R source
-  output_file = NULL,   # Fichier .qmd de sortie (auto si NULL)
-  title = NULL,         # Titre du document
-  author = NULL,        # Auteur
-  format = "html",      # Format de sortie
-  theme = "cosmo",      # Thème Quarto
-  render = TRUE,        # Générer HTML ?
-  open_html = TRUE      # Ouvrir HTML automatiquement ?
+  input_file,             # Fichier R source
+  output_file = NULL,     # Fichier .qmd de sortie (auto si NULL)
+  title = "My title",     # Titre du document
+  author = "Your name",   # Auteur
+  theme = NULL,           # Thème Quarto
+  render_html = TRUE,     # Générer HTML
+  output_html_file = NULL,# Fichier .html de sortie (auto si NULL)
+  open_html = FALSE,      # Ouvrir HTML automatiquement
 )
 ```
 
