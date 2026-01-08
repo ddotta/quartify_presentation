@@ -1220,22 +1220,6 @@ rtoqmd("script.R", theme = "flatly")
 
 ---
 
-## 🎨 Exemples de thèmes
-
-### Thème "cosmo" (défaut)
-
-- 🎨 Design moderne et épuré
-- 📱 Très responsive
-- 🔵 Palette bleue professionnelle
-
-### Thème "darkly"
-
-- 🌙 Fond sombre (dark mode)
-- 👁️ Confortable pour les yeux
-- 💻 Apprécié des développeurs
-
----
-
 ## 🔄 Intégration CI/CD
 
 ### Pourquoi automatiser ?

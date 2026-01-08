@@ -1220,37 +1220,6 @@ darkly, cyborg, slate, solar, superhero, vapor
 
 ---
 
-## 🎨 Choosing a theme
-
-### With the interface
-
-- Dropdown menu with preview
-- Real-time preview
-
-### From command line
-
-```r
-rtoqmd("script.R", theme = "flatly")
-```
-
----
-
-## 🎨 Theme examples
-
-### "cosmo" theme (default)
-
-- 🎨 Modern and clean design
-- 📱 Very responsive
-- 🔵 Professional blue palette
-
-### "darkly" theme
-
-- 🌙 Dark background (dark mode)
-- 👁️ Comfortable for the eyes
-- 💻 Appreciated by developers
-
----
-
 ## 🔄 CI/CD Integration
 
 ### Why automate?
