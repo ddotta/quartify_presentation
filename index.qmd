@@ -52,7 +52,6 @@ Un package R qui **convertit automatiquement** vos scripts R en documents Quarto
 ::: {.incremental}
 - **Automatisation** : Conversion R → Quarto en un clic
 - **Préservation** : Structure et commentaires conservés
-- **Enrichissement** : Rendu HTML
 - **Flexibilité** : des fonctions R, des addins RStudio sous forme de Shiny, une version web (sans installation requise)
 - **Évolutivité** : Du script simple au Quarto Book
 :::
@@ -365,7 +364,7 @@ rtoqmd("analyse.R")
 ```r
 # Générer uniquement le .qmd
 rtoqmd("analyse.R", 
-       render = FALSE)
+       render_html = FALSE)
 
 # Génère : analyse.qmd uniquement
 ```
@@ -385,7 +384,7 @@ rtoqmd(
   format = "html",
   theme = "flatly",
   number_sections = TRUE,
-  render = TRUE,
+  render_html = TRUE,
   output_html_file = "docs/rapport_ventes_2024.html",
   open_html = TRUE
 )
@@ -1177,7 +1176,7 @@ Parfait pour la revue de code !
 ## ✏️ Utiliser apply_styler
 
 ::: {.incremental}
-- ⚠️ Le paramètre `apply_styler` permet de formater **définitivement** vos fichiers de scripts R selon le guide de style tidyverse.
+- ⚠️ Le paramètre `apply_styler` permet de formater **définitivement** vos fichiers de scripts R.
 - Le paramètre `apply_styler` ne fonctionne que si `use_styler = TRUE`. 
 - Si vous définissez `apply_styler = TRUE` mais `use_styler = FALSE`, vous recevrez un avertissement et le fichier source ne sera pas modifié.
 - Le fichier source est modifié AVANT la conversion

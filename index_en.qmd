@@ -52,7 +52,6 @@ An R package that **automatically converts** your R scripts into Quarto document
 ::: {.incremental}
 - **Automation**: R → Quarto conversion in one click
 - **Preservation**: Structure and comments retained
-- **Enhancement**: HTML rendering
 - **Flexibility**: R functions, RStudio addins as Shiny apps, a web version (no installation required)
 - **Scalability**: From simple scripts to Quarto Books
 :::
@@ -1192,7 +1191,7 @@ Perfect for code review!
 ## ✏️ Using apply_styler
 
 ::: {.incremental}
-- ⚠️ The `apply_styler` parameter allows you to **permanently** format your R script files according to the tidyverse style guide.
+- ⚠️ The `apply_styler` parameter allows you to **permanently** format your R script files.
 - The `apply_styler` parameter only works if `use_styler = TRUE`. 
 - If you set `apply_styler = TRUE` but `use_styler = FALSE`, you will receive a warning and the source file will not be modified.
 - The source file is modified BEFORE conversion
