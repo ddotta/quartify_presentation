@@ -873,6 +873,8 @@ data <- read_csv("fichier.csv")
 - 📊 **Multiples types** : Flowcharts, séquences, Gantt, classes...
 :::
 
+[Mermaid live](https://mermaid.live/edit)
+
 ---
 
 ## 📊 Syntaxe Mermaid dans quartify
