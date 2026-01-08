@@ -862,6 +862,31 @@ data <- read_csv("fichier.csv")
 
 ---
 
+## ∑ Fonctions
+
+::: {.columns}
+::: {.column width="50%"}
+```r
+#' Additionne deux nombres
+#'
+#' @param x Une valeur numérique
+#' @param y Une valeur numérique
+#' @return La somme de x et y
+#' @examples
+#' add_numbers(2, 3)
+#' @export
+add_numbers <- function(x, y) {
+  return(x + y)
+}
+```
+:::
+::: {.column width="50%"}
+![](images/fonctions.png)
+:::
+:::
+
+---
+
 ## 📊 Diagrammes Mermaid
 
 ### Qu'est-ce que Mermaid ?
