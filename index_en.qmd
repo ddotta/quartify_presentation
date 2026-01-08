@@ -882,6 +882,9 @@ data <- read_csv("file.csv")
 
 ::: {.columns}
 ::: {.column width="50%"}
+This code in an R script:  
+
+
 ```r
 #' Additionne deux nombres
 #'
@@ -897,6 +900,8 @@ add_numbers <- function(x, y) {
 ```
 :::
 ::: {.column width="50%"}
+Generates a formatted callout in the HTML file:  
+
 ![](images/fonctions.png)
 :::
 :::
