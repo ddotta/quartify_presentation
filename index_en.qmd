@@ -916,10 +916,10 @@ Generates a formatted callout in the HTML file:
 - 📐 **Diagram language**: Simple Markdown-like syntax
 - 🎨 **Automatic rendering**: Generated during Quarto rendering
 - 🔄 **Natively integrated**: No extension required
-- 📊 **Multiple types**: Flowcharts, sequences, Gantt, classes...
-:::
+- 📊 **Multiple types**: Flowcharts, sequences, Gantt, classes... 
 
 [Mermaid live](https://mermaid.live/edit)
+:::
 
 ---
 

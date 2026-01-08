@@ -900,10 +900,10 @@ Génère dans le fichier HTML un callout mis en forme :
 - 📐 **Langage de diagrammes** : Syntaxe simple type Markdown
 - 🎨 **Rendu automatique** : Généré lors du rendu Quarto
 - 🔄 **Intégré nativement** : Pas d'extension nécessaire
-- 📊 **Multiples types** : Flowcharts, séquences, Gantt, classes...
-:::
+- 📊 **Multiples types** : Flowcharts, séquences, Gantt, classes... 
 
 [Mermaid live](https://mermaid.live/edit)
+:::
 
 ---
 
