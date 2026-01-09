@@ -62,8 +62,7 @@ An R package that **automatically converts** your R scripts into Quarto document
 
 ::: {.incremental}
 - 🚀 **Official successor** to R Markdown (new syntax and features)
-- 🎨 **25 themes** ready to use
-- 📐 **Diagrams**: Built-in Mermaid (flowcharts, sequences...)
+- 📐 **Multiple features**: callout, tabset, mermaid...
 - 📱 **Responsive**: Adapts to all screens
 - 🔮 **Future-proof**: Active development and growing community
 :::
